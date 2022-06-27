@@ -1,14 +1,12 @@
 package org.example.model;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Person")
 public class Person {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "name")
     private String name;
@@ -21,7 +19,7 @@ public class Person {
 
     }
 
-    public Person(Long id, String name, String lastName, Byte age) {
+    public Person(String name, String lastName, Byte age) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -32,9 +30,6 @@ public class Person {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
